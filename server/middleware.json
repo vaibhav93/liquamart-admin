@@ -1,0 +1,42 @@
+{
+  "initial:before": {
+    "loopback#favicon": {}
+  },
+  "initial": {
+    "compression": {},
+    "cors": {
+      "params": {
+        "origin": true,
+        "credentials": true,
+        "maxAge": 86400
+      }
+    }
+  },
+  "session": {},
+  "auth": {},
+  "parse": {},
+  "routes:before": {
+    "./middleware/customMW": {
+      "methods": [
+        "GET"
+      ],
+      "paths": [
+        "/api/categories",
+        "/api/subcategories",
+        "/api/products"
+      ]
+    }
+  },
+  "route": {},
+  "files": {
+    "loopback#static": {
+      "params": "$!../client/STANDARD/assets/js/services/lb-services.js"
+    }
+  },
+  "final": {
+    "loopback#urlNotFound": {}
+  },
+  "final:after": {
+    "errorhandler": {}
+  }
+}

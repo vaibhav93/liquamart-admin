@@ -1,0 +1,80 @@
+<table class="table no-bg table-bordered">
+	<tr>
+		<td>Product name:</td>
+		<td>
+		<input class="form-control" type="text" name="fn" class="w100" ng-model="product.name" value="{{product.name}}">
+		</td>
+		<td>Description: </td>
+		<td>
+			<input class="form-control" type="text" name="dc" class="w180" ng-model="product.description" value="{{product.description}}">
+		</td>
+				<td>Ebay: </td>
+		<td>
+			<input class="form-control" placeholder="" type="text" name="dc" class="w180" ng-model="product.links.ebay" value="{{product.links.ebay}}">
+		</td>
+		
+	</tr>
+	<tr>
+			<td>Amazon: </td>
+		<td>
+			<input class="form-control" placeholder="" type="text" name="dc" class="w180" ng-model="product.links.amazon" value="{{product.links.amazon}}">
+		</td>
+				<td>Liquamart: </td>
+		<td>
+			<input class="form-control" placeholder="" type="text" name="dc" class="w180" ng-model="product.links.liqua" value="{{product.links.liqua}}">
+		</td>
+		<td>PDF: </td>
+		<td>
+			<input class="form-control" placeholder="" type="text" name="dc" class="w180" ng-model="product.links.pdf" value="{{product.links.pdf}}">
+		</td>
+
+	</tr>
+	<tr>
+		<td>YouTube: </td>
+		<td>
+			<input class="form-control" placeholder="" type="text" name="dc" class="w180" ng-model="product.links.YT" value="{{product.links.YT}}">
+		</td>
+		<td>Featured: </td>
+		<td>
+			<div class="col-sm-12" id="featured2">
+				<div class="radio radio-primary radio-inline padding-top-0">
+				<input type="radio" id="radio17" name="radiosize3" ng-model="product.featured" ng-value="true">
+					<label for="radio17">
+						Yes
+					</label>
+				</div>
+				<div class="radio radio-primary radio-inline padding-top-0">
+					<input type="radio" id="radio18" name="radiosize3" ng-model="product.featured" ng-value="false">
+					<label for="radio18">
+						No
+					</label>
+				</div>
+			</div>
+		</td>
+	<td>Latest: </td>
+		<td>
+			<div class="col-sm-12" id="latest2">
+				<div class="radio radio-primary radio-inline padding-top-0">
+					<input type="radio" id="radio19" name="radiosize4" ng-model="product.latest" ng-value="true">
+					<label for="radio19">
+						Yes
+					</label>
+				</div>
+				<div class="radio radio-primary radio-inline padding-top-0">
+					<input type="radio" id="radio20" name="radiosize4" ng-model="product.latest" ng-value="false">
+					<label for="radio20">
+						No
+					</label>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr><td colspan="7">
+		<div class="pull-right">
+			<input type="button" class="btn btn-primary btn-sm margin-right-15" value="save" ng-click="updateProduct(product)">
+			<input type="button" class="btn btn-primary btn-sm" value=" close" ng-click="setEditId(-1)">
+		</div></td>
+	</tr>
+	<tr ng-show="alertUpdate.val===1" class="animate-show"><td colspan="7"><alert type="{{alertUpdate.type}}">{{alertUpdate.msg}}</alert></td></tr>
+</table>
+<!--  class="editRowTd" -->

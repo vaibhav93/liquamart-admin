@@ -1,0 +1,90 @@
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+	<div class="row">
+		<div class="col-sm-8">
+			<h1 class="mainTitle">Manage product associations</h1>
+			<span>Add, delete products from subcategories</span>
+		</div>
+		<div ncy-breadcrumb></div>
+	</div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: TABLE WITH FILTERS -->
+<div ng-controller="associationCtrl" class="container-fluid container-fullw">
+	<div class="row">
+		<!-- for form -->
+		<div class="col-md-6">
+			<!-- each for row -->
+			<div class="row form-horizontal">			
+				<label class="control-label col-md-3" for="catselect">Select Category</label>
+				<div class="col-md-6">
+					<div
+					id="catselect"
+					isteven-multi-select
+					input-model="categories"
+					output-model="selectedCategory"
+					button-label="icon name"
+					item-label="icon name maker"
+					tick-property="ticked"
+					orientation="horizontal"
+					selection-mode="single"
+					on-item-click="catClick(data)"
+					on-reset="catReset()"
+					>
+					</div>
+				</div>
+			</div>
+			<div class="row form-horizontal animate-show margin-top-20" ng-show="!hideAll && catSelected.ticked">
+				<label class="control-label col-md-3" for="subcatselect">Select Subcategory</label>
+				<div class="col-md-6">
+					<div
+					id="subcatselect"
+					isteven-multi-select
+					input-model="subcategories"
+					output-model="selectedSubcategory"
+					button-label="icon name"
+					item-label="icon name maker"
+					tick-property="ticked"
+					orientation="horizontal"
+					selection-mode="single"
+					on-item-click="subcatClick(data)"
+					on-reset="subcatReset()"
+					>
+					</div>
+				</div>
+			</div>
+			<div class="row form-horizontal animate-show margin-top-20" ng-show="!hideAll && subcatSelected.ticked">
+				<label class="control-label col-md-3" for="prodselect">Add/delete products in this category</label>
+				<div class="col-md-6">
+					<div
+					id="prodselect"
+					isteven-multi-select
+					input-model="products"
+					output-model="selectedProducts"
+					button-label="name"
+					max-labels= "2"
+					item-label="icon name maker"
+					tick-property="ticked"
+					orientation="horizontal"
+					on-item-click="prodClick(data)"
+					on-reset="prodReset()"
+					on-select-none="prodReset()"
+					on-select-all="prodAll()"
+					>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- for tree -->
+		<div class="col-md-6 animate-show" ng-show="selectedSubcategory.length>0">
+			<p> <strong>Products</strong> </p>
+			<ul class="list-group">
+				<li class="list-group-item animate-show" ng-repeat="product in selectedProducts">
+					{{product.name}}
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- end: TABLE WITH FILTERS -->

@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongoDs": {
+    "name": "mongoDs",
+    "connector": "mongodb",
+    "host": "ds035683.mongolab.com",
+    "port": 35683,
+    "database": "liquamart",
+    "username": "admin",
+    "password": "admin"
+  }
+}

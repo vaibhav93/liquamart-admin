@@ -1,0 +1,217 @@
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+	<div class="row">
+		<div class="col-sm-8">
+			<h1 class="mainTitle">Manage Products</h1>
+			<span>Add, delete, modify products</span>
+		</div>
+		<div ncy-breadcrumb></div>
+	</div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: TABLE WITH FILTERS -->
+<div ng-controller="productCtrl" class="container-fluid container-fullw">
+	<div class="row">
+			<div class="col-md-12">
+				<button type="button" class="btn btn-wide btn-info btn-squared" ng-click="showForm()">
+								Add Product
+				</button>
+			</div>
+	</div>
+	<div ng-show="addProductflag===1" class="row margin-top-15">
+				<div class="col-md-10">
+					<form role="form" class="form-horizontal" name="newProductForm">
+					<!-- <div class="row"> -->
+						<div class="form-group">
+							<label class="col-sm-2 control-label symbol required" for="productName">
+														Name of product
+							</label>
+							<div class="col-sm-4">
+								<input type="text" placeholder="Name" id="productName" class="form-control" ng-model="prodName" required>
+							</div>
+						
+						
+							<label class="col-sm-2 control-label" for="productDesc">
+								Description
+							</label>
+							<div class="col-sm-4">
+								<input type="text" placeholder="Optional" id="productDesc" class="form-control" ng-model="prodDesc">
+							</div>		
+						</div>
+					<!-- </div> -->
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="featured">
+								Featured:
+							</label>
+							<div class="col-sm-4" id="featured">
+								<div class="radio clip-radio radio-primary radio-inline padding-top-0">
+								<input type="radio" id="radio13" name="radiosize" ng-model="prodFeatured" ng-value="true">
+								<label for="radio13">
+									Yes
+								</label>
+							</div>
+							<div class="radio clip-radio radio-primary radio-inline padding-top-0">
+								<input type="radio" id="radio14" name="radiosize" ng-model="prodFeatured" ng-value="false">
+								<label for="radio14">
+									No
+								</label>
+							</div>
+							</div>
+						
+							<label class="col-sm-2 control-label" for="latest">
+								Latest:
+							</label>
+							<div class="col-sm-4" id="latest">
+								<div class="radio clip-radio radio-primary radio-inline padding-top-0">
+								<input type="radio" id="radio15" name="radiosize2" ng-model="prodLatest" ng-value="true">
+								<label for="radio15">
+									Yes
+								</label>
+							</div>
+							<div class="radio clip-radio radio-primary radio-inline padding-top-0">
+								<input type="radio" id="radio16" name="radiosize2" ng-model="prodLatest" ng-value="false">
+								<label for="radio16">
+									No
+								</label>
+							</div>
+							</div>
+						</div>
+						<div class="form-group">
+						<label class="col-sm-3 margin-top-10" for="parentsubcat">
+						Select parent subcategories
+						</label>
+						<div class="col-md-2">
+							<div
+							id="parentsubcat"
+							isteven-multi-select
+							input-model="subcategories"
+							output-model="selectedSubategories"
+							button-label="icon name"
+							max-labels="3"
+							item-label="icon name maker"
+							tick-property="ticked"
+							selection-mode="multiple"
+							on-item-click="subcatClick()"
+							on-reset="subcatClick()"
+							on-select-all="subcatClick()"
+							>
+							</div>
+						</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="productEbay">
+								EBay Link
+							</label>
+							<div class="col-sm-4">
+								<input type="text" placeholder="Optional" id="productEbay" class="form-control" ng-model="prodEbay">
+							</div>		
+						
+							<label class="col-sm-2 control-label" for="productAmazon">
+								Amazon Link
+							</label>
+							<div class="col-sm-4">
+								<input type="text" placeholder="Optional" id="productAmazon" class="form-control" ng-model="prodAmazon">
+							</div>		
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="productLiqua">
+								Liquamart link
+							</label>
+							<div class="col-sm-4">
+								<input type="text" placeholder="Optional" id="productLiqua" class="form-control" ng-model="prodLiqua">
+							</div>		
+						
+							<label class="col-sm-2 control-label" for="productPdf">
+								PDF
+							</label>
+							<div class="col-sm-4">
+								<input type="text" placeholder="Optional" id="productPdf" class="form-control" ng-model="prodPdf">
+							</div>		
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="productYoutube">
+								YouTube link
+							</label>
+							<div class="col-sm-4">
+								<input type="text" placeholder="Optional" id="productYoutube" class="form-control" ng-model="prodYoutube">
+							</div>		
+						
+							<label class="col-sm-2 control-label" for="productQR">
+								QR Code
+							</label>
+							<div class="col-sm-4">
+								<input type="text" placeholder="Optional" id="productQR" class="form-control" ng-model="prodQR">
+							</div>		
+						</div>
+						<div class="form-group margin-bottom-5">
+							<div class="col-sm-2">
+								<button type ="file" class="btn btn-wide btn-info btn-squared" ngf-select="upload($files)" multiple
+								accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+								Select Images</button>     
+							</div>
+							<div class="col-sm-4 alert alert-info padding-10" >							
+							<strong>Select multiple files !!</strong>
+							</div>
+							<div class="clearfix"></div>
+							<div class="row margin-top-10 margin-left-10" ng-show="files">							
+							
+							 <img ng-repeat="file in files" ngf-src="file" style="width:15%;height:15%" class="img-thumbnail pull-left">
+							</div>
+							 <progressbar ng-show="files" value="progress" type="info" class="margin-top-5 margin-bottom-5">
+												{{progress}}%
+							</progressbar>
+						</div>
+						<div ng-show="files" class-"form-group animate-show">
+							<div class="col-sm-12">
+								<button type="button" class="btn btn-wide btn-success btn-squared pull-right" ng-click="submitProduct()" ng-disabled="newProductForm.$invalid">
+									Submit
+								</button>
+							</div>
+							<div class="clearfix"></div>
+							<alert ng-show="alertSuccess.val===1" class="animate-show margin-top-10" type="{{alertSuccess.type}}">{{alertSuccess.msg}}</alert>
+							<alert ng-show="alertDanger.val===1" class="animate-show margin-top-10" type="{{alertDanger.type}}">{{alertDanger.msg}}</alert>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-6 padding-left-20" ng-show="showQR===1">
+						<div class="row">
+							<strong>Generated QR image for {{qrname}}</strong></div>
+						<div class="row margin-top-15">
+							<qr type-number="3" correction-level="'M'" size="150" text="encode" image="false" qrname="{{qrname}}"></qr>
+						</div>
+				</div>
+	</div>
+	<div class="row margin-top-20">
+		<div class="col-sm-12">
+			<!-- /// controller:  'ngTableCtrl3' -  localtion: assets/js/controllers/ngTableCtrl.js /// -->
+			
+				<table ng-table="tableParams" show-filter="true" class="table">
+					<tbody ng-repeat="product in $data" ng-controller="ItemController">
+						<tr ng-class-odd="'odd'" ng-class-even="'even'">
+							<td width="10%" data-title="'ID'" filter="{ 'id': 'text' }"> {{product.id}} </td>
+							<td width="30%" data-title="'Product name'" filter="{ 'name': 'text'}">{{product.name}}</td>
+							<td width="10%" data-title="'Featured'"><i class="ti-check" ng-if="product.featured"></i><i class="ti-close" ng-if="!product.featured"></i></td>
+							<td width="10%" data-title="'Latest'"><i class="ti-check" ng-if="product.latest"></i><i class="ti-close" ng-if="!product.latest"></i></td>
+							<td data-title="'Edit Product'">
+							<div class="pull-left margin-right-10">
+										<input type=button class="btn btn-primary btn-o btn-sm" id="editRowBtn{{p.id}}" value="edit"
+										ng-click="setEditId(product.id)">
+									</div></td>
+							<td data-title="'Delete'">
+							<div class="pull-left margin-right-10">
+										<a href="#" ng-click="deletePopUp(product.id,product.name)">
+								          <span class="glyphicon glyphicon-trash"></span>
+								        </a>
+									</div></td>
+						</tr>
+						<tr ng-show="editId===product.id" class="animate-show">
+								<td colspan="7" ng-include src="'assets/views/editProd.html'"></td>
+						</tr>
+					</tbody>
+				</table>
+			
+		</div>
+	</div>
+</div>
+<!-- end: TABLE WITH FILTERS -->

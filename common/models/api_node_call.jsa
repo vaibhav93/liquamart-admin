@@ -1,0 +1,28 @@
+http api call from node
+var optionsget = {
+    hostname : 'floating-waters-1800.herokuapp.com', // here only the domain name
+    // (no http/https !)
+    port : 443,
+    path : '/api/categories', // the rest of the url with parameters if needed
+    method : 'GET' // do GET
+};
+
+var reqGet = https.request(optionsget, function(res) {
+    console.log("statusCode: ", res.statusCode);
+    // uncomment it for header details
+//  console.log("headers: ", res.headers);
+
+
+    res.on('data', function(d) {
+        console.info('GET result:\n');
+        process.stdout.write(d);
+        console.info('\n\nCall completed');
+    });
+
+});
+
+reqGet.end();
+reqGet.on('error', function(e) {
+    console.error(e);
+    console.log(e.stack);
+});

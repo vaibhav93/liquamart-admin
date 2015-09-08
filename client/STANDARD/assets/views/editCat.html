@@ -1,0 +1,24 @@
+<table class="table no-bg table-bordered">
+	<tr>
+		<td>Category name:</td>
+		<td>
+		<input class="form-control" type="text" name="fn" class="w100" ng-model="category.name" value="{{category.name}}">
+		</td>
+		<td>Description: </td>
+		<td>
+		<input class="form-control" type="text" name="dc" class="w180" ng-model="category.description" value="{{category.description}}">
+		</td>
+		<td>Order Id: </td>
+		<td>
+		<input class="form-control" type="text" name="db" class="w180" ng-model="category.orderId" value="{{category.orderId}}">
+		</td>
+	</tr>
+	<tr><td colspan="7">
+		<div class="pull-right">
+			<input type="button" class="btn btn-primary btn-sm margin-right-15" value="save" ng-click="updateCategory(category)">
+			<input type="button" class="btn btn-primary btn-sm" value=" close" ng-click="setEditId(-1)">
+		</div></td>
+	</tr>
+	<tr ng-show="alertUpdate.val===1" class="animate-show"><td colspan="7"><alert type="{{alertUpdate.type}}">{{alertUpdate.msg}}</alert></td></tr>
+</table>
+<!--  class="editRowTd" -->

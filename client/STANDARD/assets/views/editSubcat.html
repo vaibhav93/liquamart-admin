@@ -1,0 +1,41 @@
+<table class="table no-bg table-bordered">
+	<tr>
+		<td>Subategory name:</td>
+		<td>
+		<input class="form-control" type="text" name="fn" class="w100" ng-model="subcategory.name" value="{{subcategory.name}}">
+		</td>
+		<td>Description: </td>
+		<td>
+		<input class="form-control" type="text" name="dc" class="w180" ng-model="subcategory.description" value="{{subcategory.description}}">
+		</td>
+		<td>Order Id: </td>
+		<td>
+		<input class="form-control" type="text" name="db" class="w180" ng-model="subcategory.orderId" value="{{subcategory.orderId}}">
+		</td>
+		<td>Parent Category:</td>
+		<td>
+			<ui-select ng-model="subcategory.parent"
+				id="parentCategory"
+				theme="bootstrap"
+				on-select="selected2($select.selected,subcategory)"
+				ng-disabled="disabled"
+				reset-search-input="false"
+				style="width: 300px;" required>
+				<ui-select-match placeholder="{{subcategory.catname}}">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="category in categories | filter: $select.search"
+				refresh="refreshCategories($select.search)"
+				refresh-delay="0">
+				<div ng-bind-html="category.name | highlight: $select.search"></div>
+				</ui-select-choices>
+			</ui-select>
+		</td>
+	</tr>
+	<tr><td colspan="9">
+		<div class="pull-right">
+			<input type="button" class="btn btn-primary btn-sm margin-right-15" value="save" ng-click="updatesubCategory(subcategory)">
+			<input type="button" class="btn btn-primary btn-sm" value=" close" ng-click="setEditId(-1)">
+		</div></td>
+	</tr>
+	<tr ng-show="alertUpdate.val===1" class="animate-show"><td colspan="9"><alert type="{{alertUpdate.type}}">{{alertUpdate.msg}}</alert></td></tr>
+</table>
+<!--  class="editRowTd" -->
