@@ -5,7 +5,7 @@ var multer = require('multer');
 var os = require('os');
 var fs = require('fs');
 var app = module.exports = loopback();
-var upload = multer({ dest: 'client/STANDARD/assets/images',
+var upload = multer({ dest: 'client/admin/assets/images',
                     rename: function (fieldname, filename) {
         return filename+"_"+Date.now();
     } });
