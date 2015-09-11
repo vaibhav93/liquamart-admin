@@ -6,7 +6,7 @@ app.controller('ItemController',["$scope",function($scope){
 $scope.product.links=[{ebay:''},{amazon:''},{liqua:''},{pdf:''},{YT:''}];
 }]);
 
-app.controller('productCtrl', ["$scope", "$filter","$timeout","$http", "Upload", "ngTableParams", "Product","Subcategory", "SweetAlert", function ($scope,$filter,$timeout, $http, $upload, ngTableParams, Product, Subcategory, SweetAlert) {
+app.controller('productCtrl', ["$scope", "$filter","$timeout","$http", "Upload", "ngTableParams","$localStorage", "Product","Subcategory", "SweetAlert", function ($scope,$filter,$timeout, $http, $upload, ngTableParams,$localStorage, Product, Subcategory, SweetAlert) {
 	
     //multiple parent subcategories
     $scope.subcategories=[];
@@ -90,10 +90,9 @@ app.controller('productCtrl', ["$scope", "$filter","$timeout","$http", "Upload",
         Product.create({name:$scope.prodName,description:$scope.prodDesc,imgUrls:$scope.imageurls,qrcode:$scope.prodQR,
                         links:url_links,featured:$scope.prodFeatured,latest:$scope.prodLatest},
     		function(success){
-    			console.log(success.name + ' '+success.id);
                 angular.forEach($scope.selectedSubategories,function(selectedSubcategory){
                     $http.put("http://localhost:3000/api/subcategories/" + 
-                selectedSubcategory.id + "/products/rel/" + success.id)
+                selectedSubcategory.id + "/products/rel/" + success.id+"?access_token="+$localStorage.accessToken)
                 .success(function(response){
                     angular.forEach($scope.subcategories,function(subcategory){subcategory.ticked=false})});
                 });

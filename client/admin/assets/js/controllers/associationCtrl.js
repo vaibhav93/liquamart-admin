@@ -5,8 +5,8 @@
 app.controller('ItemController',["$scope",function($scope){
 
 }]);
-app.controller('associationCtrl', ["$scope", "$filter","$http", "Upload", "Category","Subcategory", "Product", "SweetAlert", 
-    function ($scope,$filter,$http, $upload, Category,Subcategory, Product, SweetAlert) {
+app.controller('associationCtrl', ["$scope", "$filter","$http","$localStorage", "Upload", "Category","Subcategory", "Product", "SweetAlert", 
+    function ($scope,$filter,$http,$localStorage, $upload, Category,Subcategory, Product, SweetAlert) {
 	//flags
     $scope.hideAll=false;
     $scope.catSelected= false;
@@ -54,12 +54,12 @@ app.controller('associationCtrl', ["$scope", "$filter","$http", "Upload", "Categ
         if(data.ticked){
             //add relation
                 $http.put("http://localhost:3000/api/subcategories/" + 
-                $scope.subcatSelected.id + "/products/rel/" + data.id)
+                $scope.subcatSelected.id + "/products/rel/" + data.id+"?access_token="+$localStorage.accessToken)
                 .success(function(response){console.log(response)});
             } 
         else {
                 $http.delete("http://localhost:3000/api/subcategories/" + 
-                $scope.subcatSelected.id + "/products/rel/" + data.id)
+                $scope.subcatSelected.id + "/products/rel/" + data.id +"?access_token="+$localStorage.accessToken)
                 .success(function(response){console.log(response)});
             }
         console.log(data);
@@ -78,6 +78,5 @@ app.controller('associationCtrl', ["$scope", "$filter","$http", "Upload", "Categ
         })
     }
 
-    
     $scope.catReset = function(){$scope.hideAll= true}
 }]);

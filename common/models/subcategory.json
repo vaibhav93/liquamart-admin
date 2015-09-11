@@ -44,7 +44,13 @@
     {
       "accessType": "WRITE",
       "principalType": "ROLE",
-      "principalId": "name",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "admin",
       "permission": "ALLOW"
     }
   ],

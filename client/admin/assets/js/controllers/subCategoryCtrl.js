@@ -67,7 +67,8 @@ app.controller('subCategoryCtrl', ["$scope", "$filter","$timeout", "Upload", "ng
     				$scope.alertSuccess.val=-1,
     				$scope.subcatName='';
     				$scope.subcatDesc='';
-    				$scope.parentCategory.name=undefined;
+    				$scope.subcatorderId='';
+    				$scope.category.selected=undefined;
     			},2000);
     			$timeout(function(){$scope.f=undefined;},3000);
     		},function(error){ console.log(error);
