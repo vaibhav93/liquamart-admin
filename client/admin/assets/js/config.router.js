@@ -39,6 +39,11 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
         title: 'Dashboard',
         ncyBreadcrumb: {
             label: 'Dashboard'
+        },
+        data:{
+            permissions:{
+                only:['admin']
+            }
         }
     }).state('app.ui', {
         url: '/ui',

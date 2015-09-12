@@ -31,13 +31,71 @@ app.post('/img', upload.single('file'), function(req, res,next) {
     arr.splice(0,1);
     arr = arr.join("/");
     arr = fullUrl+arr;
-    console.log(arr);
+    //console.log(arr);
     fs.rename(temp_path,new_path,function(err){
       if(err){
-        console.log(err);
+        //console.log(err);
       }});
           res.setHeader('Content-Type', 'application/json');
     res.json({img:arr});
+});
+app.use('/api/getRole',function(req,res,next){
+
+  var currentuser={};
+  var tokenId = false;
+  if (req.query && req.query.access_token) {
+    tokenId = req.query.access_token;
+    //res.send(tokenId);
+  }
+  if (tokenId){
+    var UserModel = app.models.User;
+
+    // Logic borrowed from user.js -> User.logout()
+    UserModel.relations.accessTokens.modelTo.findById(tokenId, function(err, accessToken) {
+      if (err) next(err);
+      if (!accessToken) {
+        res.status(500).send({status:500, message: 'Invalid Access token', type:'internal'}); 
+        res.end();
+      }
+      else{
+        // Look up the user associated with the accessToken
+        UserModel.findById(accessToken.userId, function (err, user) {
+          if (err) {
+            return next(err);
+          }
+          if (!user)  {
+            res.status(500).send({status:500, message: 'Cannot find user', type:'internal'}); 
+            res.end();
+          }
+          var roleMappingModel = app.models.RoleMapping;
+          roleMappingModel.findOne({where:{principalId:user.id}},function(err,mappings){
+            if(err) {
+              next(err);
+            }
+            else{
+              var roleModel = app.models.Role;
+              roleModel.findOne({where:{id:mappings.id}},function(err,Role){
+                if(err) console.log(err);
+                else{
+                  res.json(Role.name);
+                }
+              });
+            }
+          })
+        });
+      }
+    });
+  }
+  // var AccessTokenModel = app.models.AccessToken;
+  // AccessTokenModel.findForRequest(req, {}, function(err,token){
+  //   if(err){
+  //     res.send('error');
+  //   }
+  //   else{
+  //     res.send('hyolo');
+  //     console.log(token);
+  //   }
+  // })
 });
 
 app.start = function() {

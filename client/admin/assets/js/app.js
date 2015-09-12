@@ -20,5 +20,6 @@ angular.module("clip-two", [
 	'ngFileUpload',
 	'LocalStorageModule',
 	'ja.qr',
-	'isteven-multi-select'
+	'isteven-multi-select',
+	'permission'
 ]);

@@ -105,6 +105,7 @@
     "ng-file-upload": "~7.0.16",
     "ng-file-upload-shim": "~7.0.16",
     "angular-local-storage": "~0.2.2",
-    "angular-multi-select": "~4.0.0"
+    "angular-multi-select": "~4.0.0",
+    "angular-permission": "~0.3.1"
   }
 }

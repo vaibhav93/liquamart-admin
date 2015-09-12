@@ -1,10 +1,14 @@
 var app = angular.module('clipApp', ['clip-two']);
-app.run(['$rootScope', '$state', '$stateParams',
-function ($rootScope, $state, $stateParams) {
+app.run(['$rootScope', '$state', '$stateParams','Permission','ngAuthorize','$q',
+function ($rootScope, $state, $stateParams,Permission,Authorize,$q) {
 
     // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
     FastClick.attach(document.body);
-
+    Permission.defineRole('admin',function(stateParams){
+        var deferred = $q.defer();
+        Authorize.getRole(deferred);
+        return deferred.promise; 
+    })
     // Set some reference to access them from any scope
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
@@ -33,12 +37,9 @@ function ($rootScope, $state, $stateParams) {
             logo: 'assets/images/logo.png', // relative path of the project logo
         }
     };
-    /*$rootScope.user = {
-        name: 'Peter',
-        job: 'ng-Dev',
-        picture: 'app/img/user/02.jpg'
-    };*/
+
 }]);
+
 // translate config
 app.config(['$translateProvider',
 function ($translateProvider) {
