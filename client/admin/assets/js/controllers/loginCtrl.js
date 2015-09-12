@@ -27,6 +27,7 @@ app.controller('LoginCtrl', ["User","$scope","$state","$rootScope","$localStorag
 			$localStorage.user = res.user;
         	$state.go('app.dashboard');
       }, function(res) {
+      	toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
         $state.go('login.signin');
       });		
 	};
