@@ -15,7 +15,6 @@ app.controller('LoginCtrl', ["User","$scope","$state","$rootScope","$localStorag
     password: ''
   	};
   	$rootScope.$on('$stateChangePermissionDenied',function(){
-  		console.log('i am fireed');
   		toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
   	});
 

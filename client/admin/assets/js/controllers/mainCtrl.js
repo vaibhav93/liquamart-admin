@@ -13,6 +13,8 @@ function ($rootScope, $scope, $state, $translate, $localStorage, $window, $docum
         console.log('logout link clicked');
         User.logout(function(res)
             { //success
+                delete $localStorage.user;
+                delete $localStorage.accessToken;
                 console.log('logout success');
                 $state.go('login.signin');},
             function(res){
