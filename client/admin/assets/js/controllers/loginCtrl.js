@@ -2,12 +2,22 @@
 /** 
   * Controller for login
 */
-app.controller('LoginCtrl', ["User","$scope","$state","$rootScope","$localStorage", function (User,$scope,$state,$rootScope,$localStorage) {
-	
+app.controller('LoginCtrl', ["User","$scope","$state","$rootScope","$localStorage","toaster", 
+	function (User,$scope,$state,$rootScope,$localStorage,toaster) {
+	    $scope.toaster = {
+        type: 'error',
+        title: 'Invalid login',
+        text: 'Unauthorized access'
+    };
+
 	$scope.credentials = {
     email: '',
     password: ''
   	};
+  	$rootScope.$on('$stateChangePermissionDenied',function(){
+  		console.log('i am fireed');
+  		toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
+  	});
 
 	$scope.login = function (){
 		$scope.loginResult = User.login($scope.credentials,

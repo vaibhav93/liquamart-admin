@@ -42,7 +42,8 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
         },
         data:{
             permissions:{
-                only:['admin']
+                only:['admin'],
+                redirectTo: 'login.signin'
             }
         }
     }).state('app.ui', {
@@ -419,6 +420,7 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
 	.state('login', {
 	    url: '/login',
 	    template: '<div ui-view class="fade-in-right-big smooth"></div>',
+        resolve: loadSequence('toaster'),
 	    abstract: true
 	}).state('login.signin', {
 	    url: '/signin',

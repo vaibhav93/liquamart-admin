@@ -2,7 +2,7 @@
 /**
  * Clip-Two Main Controller
  */
-app.controller('AppCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', 'User',
+app.controller('AppCtrl', ['$rootScope', '$scope', '$state', '$translate','$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', 'User',
 function ($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, User) {
 
     // Loading bar transition
@@ -28,6 +28,12 @@ function ($rootScope, $scope, $state, $translate, $localStorage, $window, $docum
         cfpLoadingBar.start();
         console.log(fromState);
     });
+
+    $rootScope.$on('$stateChangePermissionDenied',function(){
+        cfpLoadingBar.complete();
+        cfpLoadingBar.set(0.0);
+    });
+    
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
 
         //stop loading bar on stateChangeSuccess
