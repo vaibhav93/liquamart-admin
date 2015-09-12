@@ -214,7 +214,12 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
         ncyBreadcrumb: {
             label: 'Category'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'ui.mask', 'ngTable', 'ngTableCtrl')
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'ui.mask', 'ngTable', 'ngTableCtrl'),
+        data:{
+            permissions:{
+                only:['admin']
+            }
+        }
     }).state('app.form.subcategory', {
         url: '/subcategory',
         templateUrl: "assets/views/form_subcategory.html",
@@ -222,7 +227,12 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
         ncyBreadcrumb: {
             label: 'Subcategory'
         },
-        resolve: loadSequence('ui.select', 'ui.mask', 'ngTable', 'subCategoryCtrl')
+        resolve: loadSequence('ui.select', 'ui.mask', 'ngTable', 'subCategoryCtrl'),
+        data:{
+            permissions:{
+                only:['admin']
+            }
+        }
     }).state('app.form.product', {
         url: '/product',
         templateUrl: "assets/views/form_product.html",
@@ -230,7 +240,12 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
         ncyBreadcrumb: {
             label: 'Products'
         },
-        resolve: loadSequence('ui.select', 'ui.mask', 'ngTable', 'productCtrl')
+        resolve: loadSequence('ui.select', 'ui.mask', 'ngTable', 'productCtrl'),
+        data:{
+            permissions:{
+                only:['admin']
+            }
+        }
     }).state('app.form.associate', {
         url: '/associate',
         templateUrl: "assets/views/form_associate.html",
@@ -238,7 +253,12 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
         ncyBreadcrumb: {
             label: 'Associations'
         },
-        resolve: loadSequence('ui.mask', 'associationCtrl')
+        resolve: loadSequence('ui.mask', 'associationCtrl'),
+        data:{
+            permissions:{
+                only:['admin']
+            }
+        }
     }).state('app.form.xeditable', {
         url: '/xeditable',
         templateUrl: "assets/views/form_xeditable.html",
