@@ -9,7 +9,7 @@ module.exports = function(app) {
 
 
       var products =[
-      {name:'RO'},
+      {name:'RO',qrcode:"12345"},
       {name:'Calco'},
       {name:'Porcelain Asia'},
       {name:'Samsung s6'},

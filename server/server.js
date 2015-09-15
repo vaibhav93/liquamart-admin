@@ -4,6 +4,8 @@ var path = require('path');
 var multer = require('multer');
 var os = require('os');
 var fs = require('fs');
+var bodyParser = require('body-parser');
+
 var app = module.exports = loopback();
 var upload = multer({ dest: 'client/admin/assets/images',
                     rename: function (fieldname, filename) {
@@ -18,9 +20,22 @@ if (env !== 'prod') {
   staticPath = path.resolve(__dirname, '../dist/');
   console.log("Running app in prodction mode");
 }
-
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
 app.use(loopback.static(staticPath));
 
+app.post('/api/qr',function(req,res){
+    var Product = app.models.product;
+    Product.findOne({where:{qrcode:req.body.qr}},function(err,product){
+      if(err || product==null){
+        res.status(500).send({status:500, message: 'QR code not found in database', type:'internal'}); 
+        res.end();
+      }
+      else{
+        res.json(product);
+      }
+    })
+});
 app.post('/img', upload.single('file'), function(req, res,next) {
     //console.log(req.file);
     var fullUrl = req.protocol + '://' + req.get('host')+'/' ;
