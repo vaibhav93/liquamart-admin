@@ -17,6 +17,12 @@
       "type": "hasAndBelongsToMany",
       "model": "subcategory",
       "foreignKey": ""
+    },
+    "users": {
+      "type": "hasMany",
+      "model": "user",
+      "foreignKey": "",
+      "through": "purchase"
     }
   },
   "acls": [

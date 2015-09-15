@@ -48,5 +48,9 @@
   "product": {
     "dataSource": "db",
     "public": true
+  },
+  "purchase": {
+    "dataSource": "db",
+    "public": true
   }
 }

@@ -12,7 +12,14 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "products": {
+      "type": "hasMany",
+      "model": "product",
+      "foreignKey": "",
+      "through": "purchase"
+    }
+  },
   "acls": [
     {
       "accessType": "*",

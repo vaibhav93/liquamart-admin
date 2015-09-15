@@ -1,0 +1,29 @@
+{
+  "name": "purchase",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "site": {
+      "type": "string",
+      "required": true
+    }
+    },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": ""
+    },
+    "product": {
+      "type": "belongsTo",
+      "model": "product",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
