@@ -33,6 +33,7 @@ app.post('/api/qr',function(req,res){
         res.end();
       }
       else{
+        product.status=200;
         res.json(product);
       }
     })
