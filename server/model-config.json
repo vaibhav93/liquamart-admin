@@ -52,5 +52,9 @@
   "purchase": {
     "dataSource": "db",
     "public": true
+  },
+  "cat": {
+    "dataSource": "db",
+    "public": true
   }
 }

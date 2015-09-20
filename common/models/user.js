@@ -24,7 +24,7 @@ User.findOne({ where:query }, function(err,user){
 			} else{
 				console.log('User created: ' + query.email);
 				User.login({email:query.email,password:dummy_pass},function(err,new_accessToken){
-				cb(null,new_accessToken.id);	
+				cb(null,new_accessToken.id,new_accessToken.userId);	
 			});	
 			}
 		});
@@ -37,7 +37,7 @@ User.findOne({ where:query }, function(err,user){
 				cb(defaultError);
 			}
 			else{
-				cb(null,new_accessToken.id);
+				cb(null,new_accessToken.id,new_accessToken.userId);
 			}
 		});
 	}
@@ -86,7 +86,7 @@ User.findOne({ where:query }, function(err,user){
 				User.login({email:query.email,password:dummy_pass},function(err,new_accessToken){
 					ret.accessToken = new_accessToken.id;
 					ret.email = query.email
-				cb(null,ret.accessToken,query.email);	
+				cb(null,ret.accessToken,query.email,new_accessToken.userId);	
 			});	
 			}
 		});
@@ -101,7 +101,7 @@ User.findOne({ where:query }, function(err,user){
 			else{
 				ret.accessToken = new_accessToken.id;
 					ret.email = query.email
-				cb(null,ret.accessToken,query.email);
+				cb(null,ret.accessToken,query.email,new_accessToken.userId);
 				//cb(null,new_accessToken.id,query.email);
 			}
 		});
@@ -115,7 +115,7 @@ User.remoteMethod(
     'loginWithAccessTokenfb', 
     {
        accepts: {arg: 'accessToken', type: 'string'},
-       returns: [{arg: 'accessToken', type: 'string'},{arg: 'email', type: 'string'}],
+       returns: [{arg: 'accessToken', type: 'string'},{arg: 'email', type: 'string'},{arg:'userId',type:'number'}],
        http: {path: '/loginWithFb', verb: 'POST'}
      }
 );
@@ -124,7 +124,7 @@ User.remoteMethod(
 	'loginWithAccessTokenGoogle',
 	{
 		accepts: [{arg: 'uid', type: 'string'},{arg: 'email',type:'string'},{arg:'name', type:'string'}],
-		returns: {arg: 'accessToken', type: 'string'},
+		returns: [{arg: 'accessToken', type: 'string'},{arg:'userId',type:'number'}],
        	http: {path: '/loginWithGoogle', verb: 'POST'}
 	}
 );

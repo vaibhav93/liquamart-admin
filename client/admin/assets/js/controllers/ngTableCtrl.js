@@ -187,7 +187,7 @@ app.controller('ngCatergoryTableCtrl', ["$scope", "$filter","$timeout", "Upload"
 }]);
 app.controller('ngTableCtrl3', ["$scope", "$filter", "$http", "$timeout", "ngTableParams","User", function ($scope, $filter,$http, $timeout, ngTableParams, User) {
         $scope.disabled = false;
-
+        $scope.test='i am custom directive';
           $scope.enable = function() {
             $scope.disabled = false;
           };
@@ -202,7 +202,7 @@ app.controller('ngTableCtrl3', ["$scope", "$filter", "$http", "$timeout", "ngTab
                   'assets/json/states.json',
                   {params: params}
                 ).then(function(response) {
-                    console.log(response.data);
+                    //console.log(response.data);
                   $scope.addresses = response.data;
                 });
             };

@@ -26,6 +26,7 @@ app.use(loopback.static(staticPath));
 
 app.post('/api/qr',function(req,res){
     var Product = app.models.product;
+    console.log(req.body.qr);
     Product.findOne({where:{qrcode:req.body.qr}},function(err,product){
       if(err || product==null){
         res.status(500).send({status:500, message: 'QR code not found in database', type:'internal'}); 

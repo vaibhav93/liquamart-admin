@@ -208,6 +208,14 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
             label: 'Elements'
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'ui.mask', 'touchspin-plugin', 'selectCtrl')
+    }).state('app.form.playground', {
+        url: '/playground',
+        templateUrl: "assets/views/form_playground.html",
+        title: 'Forms playground',
+        ncyBreadcrumb: {
+            label: 'playground'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'ui.mask', 'touchspin-plugin', 'selectCtrl')
     }).state('app.form.category', {
         url: '/category',
         templateUrl: "assets/views/form_category.html",
