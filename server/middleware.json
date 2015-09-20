@@ -18,10 +18,10 @@
   "routes:before": {
     "./middleware/customMW": {
       "methods": [
-        "GET"
+        "POST"
       ],
       "paths": [
-        "/api/categories",
+        "/api/purchases",
         "/api/subcategories",
         "/api/products"
       ]
