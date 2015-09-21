@@ -53,12 +53,12 @@ app.controller('associationCtrl', ["$scope", "$filter","$http","$localStorage", 
     $scope.prodClick = function(data){
         if(data.ticked){
             //add relation
-                $http.put("http://localhost:3000/api/subcategories/" + 
+                $http.put("http://app.liquamart.com/api/subcategories/" + 
                 $scope.subcatSelected.id + "/products/rel/" + data.id+"?access_token="+$localStorage.accessToken)
                 .success(function(response){console.log(response)});
             } 
         else {
-                $http.delete("http://localhost:3000/api/subcategories/" + 
+                $http.delete("http://app.liquamart.com/api/subcategories/" + 
                 $scope.subcatSelected.id + "/products/rel/" + data.id +"?access_token="+$localStorage.accessToken)
                 .success(function(response){console.log(response)});
             }

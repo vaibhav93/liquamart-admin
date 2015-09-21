@@ -91,7 +91,7 @@ app.controller('productCtrl', ["$scope", "$filter","$timeout","$http", "Upload",
                         links:url_links,featured:$scope.prodFeatured,latest:$scope.prodLatest},
     		function(success){
                 angular.forEach($scope.selectedSubategories,function(selectedSubcategory){
-                    $http.put("http://localhost:3000/api/subcategories/" + 
+                    $http.put("http://app.liquamart.com/api/subcategories/" + 
                 selectedSubcategory.id + "/products/rel/" + success.id+"?access_token="+$localStorage.accessToken)
                 .success(function(response){
                     angular.forEach($scope.subcategories,function(subcategory){subcategory.ticked=false})});
