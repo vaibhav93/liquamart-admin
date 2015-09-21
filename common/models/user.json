@@ -28,12 +28,6 @@
       "permission": "DENY"
     },
     {
-      "accessType": "READ",
-      "principalType": "ROLE",
-      "principalId": "users",
-      "permission": "ALLOW"
-    },
-    {
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "admin",
@@ -78,6 +72,12 @@
       "principalId": "$unauthenticated",
       "permission": "ALLOW",
       "property": "loginWithAccessTokenGoogle"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}
