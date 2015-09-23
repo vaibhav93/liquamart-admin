@@ -13,11 +13,15 @@
   },
   "validations": [],
   "relations": {
-    "products": {
+    "purchases": {
       "type": "hasMany",
-      "model": "product",
-      "foreignKey": "",
-      "through": "purchase"
+      "model": "purchase",
+      "foreignKey": ""
+    },
+    "favourites": {
+      "type": "hasMany",
+      "model": "favourite",
+      "foreignKey": ""
     }
   },
   "acls": [

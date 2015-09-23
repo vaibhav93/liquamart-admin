@@ -18,11 +18,15 @@
       "model": "subcategory",
       "foreignKey": ""
     },
-    "users": {
+    "purchases": {
       "type": "hasMany",
-      "model": "user",
-      "foreignKey": "",
-      "through": "purchase"
+      "model": "purchase",
+      "foreignKey": ""
+    },
+    "favourites": {
+      "type": "hasMany",
+      "model": "favourite",
+      "foreignKey": ""
     }
   },
   "acls": [
