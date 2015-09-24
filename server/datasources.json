@@ -2,5 +2,14 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "mongoDs": {
+    "name": "mongoDs",
+    "connector": "mongodb",
+    "host": "ds061228.mongolab.com",
+    "port": 61228,
+    "database": "liqua",
+    "username": "admin",
+    "password": "admin"
   }
 }
