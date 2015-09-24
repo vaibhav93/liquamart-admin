@@ -34,7 +34,7 @@
     "public": false
   },
   "user": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
     "public": true
   },
   "category": {
@@ -50,11 +50,11 @@
     "public": true
   },
   "purchase": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
     "public": true
   },
   "favourite": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
     "public": true
   },
   "cat": {
