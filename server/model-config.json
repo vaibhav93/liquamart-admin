@@ -30,7 +30,7 @@
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "user": {
@@ -38,11 +38,11 @@
     "public": true
   },
   "category": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": true
   },
   "subcategory": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": true
   },
   "product": {
@@ -50,11 +50,11 @@
     "public": true
   },
   "purchase": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": true
   },
   "favourite": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": true
   }
 }
