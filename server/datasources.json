@@ -9,7 +9,7 @@
     "host": "ds061228.mongolab.com",
     "port": 61228,
     "database": "liqua",
-    "username": "liquamart",
-    "password": "Doodle@123"
+    "username": "admin",
+    "password": "admin"
   }
 }

@@ -2,41 +2,8 @@
 
 module.exports = function(app) {
 
-  //createDefaultUsers();
+  createDefaultUsers();
 
-  app.dataSources.mongo.autoupdate('Role', function(err) {
-    if (err) throw err;
-    var roles = [{
-      name: 'admin',
-      users: [{
-        fname: 'Vaibhav',
-        email: 'admin@abc.com',
-        username: 'admin',
-        password: 'admin'
-      }]
-    }, {
-      name: 'users',
-      users: [{
-        fname: 'Varun',
-        email: 'user@abc.com',       
-        username: 'user',
-        password: 'user'
-      }]
-    }];
-
-    roles.forEach(function(role) {
-      Role.findOrCreate(
-        {where: {name: role.name}}, // find
-        {name: role.name}, // create
-        function(err, createdRole, created) {
-          if (err) {
-            console.error('error running findOrCreate('+role.name+')', err);
-          }
-          (created) ? console.log('created role', createdRole.name)
-                    : console.log('found role', createdRole.name);
-          })
-      })
-  })
   function createDefaultUsers() {
 
     console.log('Creating roles and users');

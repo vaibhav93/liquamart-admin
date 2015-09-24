@@ -30,7 +30,7 @@
     "public": false
   },
   "Role": {
-    "dataSource": "mongo",
+    "dataSource": "db",
     "public": false
   },
   "user": {
