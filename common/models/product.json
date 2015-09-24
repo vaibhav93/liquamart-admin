@@ -1,5 +1,8 @@
 {
   "name": "product",
+  "mongodb": {
+    "collection": "product"
+  },
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
