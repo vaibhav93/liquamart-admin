@@ -6,6 +6,7 @@
   "mongoDs": {
     "name": "mongoDs",
     "connector": "mongodb",
+    "connectionTimeout": 1000000,
     "host": "ds061228.mongolab.com",
     "port": 61228,
     "database": "liqua",
