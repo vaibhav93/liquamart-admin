@@ -6,9 +6,9 @@
   "mongo": {
     "name": "mongo",
     "connector": "mongodb",
-    "host": "ds061228.mongolab.com",
-    "port": 61228,
-    "database": "liqua",
+    "host": "ds035683.mongolab.com",
+    "port": 35683,
+    "database": "liquamart",
     "username": "admin",
     "password": "admin"
   }
