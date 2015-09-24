@@ -1,7 +1,28 @@
 var https = require('https');
 var FB = require('fb');
+var app = require('../../server/server');
 var response={};
 module.exports = function(User) {
+	// User.afterRemote('prototype.__get__purchases',function(ctx,purchases,next){
+	// 	var i=0
+	// 	promiseWhile(function(){
+	// 		return i < purchases.length
+	// 	},function(){
+	// 		productModel.findById(ctx.result[i].productId).then(function(product){
+	// 			i++;
+	// 			console.log(i);
+	// 		})
+	// 	});
+			
+	// 	// for(var i=0;i<ctx.result.length;i++){
+
+	// 	// 	var productModel = app.models.product;
+	// 	// 	productModel.findById(ctx.result[i].productId).then(function(product){
+	// 	// 		console.log(i);
+	// 	// 	})
+	// 	// }
+		
+	// });
 	var dummy_pass ='@39?C5(nfMyRv2zW';
 User.loginWithAccessTokenGoogle = function(uid,email,name,cb){
 console.log('here');

@@ -7,11 +7,13 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 
 var app = module.exports = loopback();
+global.Promise = require('bluebird');
 var upload = multer({ dest: 'client/admin/assets/images',
                     rename: function (fieldname, filename) {
         return filename+"_"+Date.now();
     } });
 var staticPath = null;
+
 var env = 'dev';
 if (env !== 'prod') {
   staticPath = path.resolve(__dirname, '../client/');
@@ -38,6 +40,7 @@ app.post('/api/qr',function(req,res){
       }
     })
 });
+
 app.post('/img', upload.single('file'), function(req, res,next) {
     //console.log(req.file);
     var fullUrl = req.protocol + '://' + req.get('host')+'/' ;
@@ -56,6 +59,15 @@ app.post('/img', upload.single('file'), function(req, res,next) {
           res.setHeader('Content-Type', 'application/json');
     res.json({img:arr});
 });
+// app.use('/api/users/purchases',function(req,res){
+//     var tokenId;
+//     if(req.query && req.query.access_token) {
+//       tokenId = req.query.access_token;
+//       console.log(tokenId);
+//     }
+
+    
+// })
 app.use('/api/getRole',function(req,res,next){
 
   var currentuser={};
@@ -103,16 +115,7 @@ app.use('/api/getRole',function(req,res,next){
       }
     });
   }
-  // var AccessTokenModel = app.models.AccessToken;
-  // AccessTokenModel.findForRequest(req, {}, function(err,token){
-  //   if(err){
-  //     res.send('error');
-  //   }
-  //   else{
-  //     res.send('hyolo');
-  //     console.log(token);
-  //   }
-  // })
+
 });
 
 app.start = function() {
