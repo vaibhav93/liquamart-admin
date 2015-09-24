@@ -4,7 +4,7 @@ module.exports = function(app) {
   // define a custom scope
   
 
-  app.dataSources.mongo.autoupdate('subcategory', function(err) {
+  app.dataSources.db.autoupdate('subcategory', function(err) {
     if (err) throw err;
 
 

@@ -38,23 +38,23 @@
     "public": true
   },
   "category": {
-    "dataSource": "mongo",
+    "dataSource": "db",
     "public": true
   },
   "subcategory": {
-    "dataSource": "mongo",
+    "dataSource": "db",
     "public": true
   },
   "product": {
-    "dataSource": "mongo",
+    "dataSource": "db",
     "public": true
   },
   "purchase": {
-    "dataSource": "mongo",
+    "dataSource": "db",
     "public": true
   },
   "favourite": {
-    "dataSource": "mongo",
+    "dataSource": "db",
     "public": true
   }
 }
