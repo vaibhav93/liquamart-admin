@@ -15,7 +15,8 @@
 		},
 		{
 			name: "Weddings"
-			type: "multi"
+			type: "multi",
+			values: ['type1','type2','type3']
 		}
 	]
 }

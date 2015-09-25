@@ -8,7 +8,8 @@ app.directive('features',['$timeout',function($timeout){
 	var directive = {};
 
 	directive.restrict = 'E';
-	directive.template = '<span>{{test}}</span>'
+	directive.template = '<div class="form-group">'+
+						
 
 	return directive;
 
