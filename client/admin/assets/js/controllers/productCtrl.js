@@ -3,7 +3,7 @@
   * controllers used for the dashboard
 */
 app.controller('ItemController',["$scope",function($scope){
-$scope.product.links=[{ebay:''},{amazon:''},{liqua:''},{pdf:''},{YT:''}];
+//$scope.product.links={ebay:'',amazon:'',liqua:'',pdf:'',YT:''};
 }]);
 
 app.controller('productCtrl', ["$scope", "$filter","$timeout","$http", "Upload", "ngTableParams","$localStorage", "Product","Subcategory", "SweetAlert", function ($scope,$filter,$timeout, $http, $upload, ngTableParams,$localStorage, Product, Subcategory, SweetAlert) {
