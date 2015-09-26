@@ -205,6 +205,7 @@ app.controller('productCtrl', ["$scope", "$filter","$timeout","$http", "Upload",
         }, function (isConfirm) {
             if (isConfirm) {
                 $http.get("http://app.liquamart.com:80/api/products/"+productId+"/subcategories").success(function(response){
+                    console.log('hiiiiiiiiii');
                     console.log(response);
                     angular.forEach(response,function(subcat){
                         console.log(subcat);
@@ -214,8 +215,9 @@ app.controller('productCtrl', ["$scope", "$filter","$timeout","$http", "Upload",
                     });
                     Product.deleteById({id:productId},
                     function(success){console.log(productId);console.log('delete success' +productId)},
-                    function(error){console.log('delete error :'+error)});
-                    }
+                    function(error){console.log('delete error :'+error)
+                    });
+                    
                 });
 
                 SweetAlert.swal({
