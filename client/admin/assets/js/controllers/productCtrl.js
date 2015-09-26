@@ -204,8 +204,17 @@ app.controller('productCtrl', ["$scope", "$filter","$timeout","$http", "Upload",
             closeOnCancel: false
         }, function (isConfirm) {
             if (isConfirm) {
+                Product.subcategory({id:productId},
+                    function(success){console.log(success)
+                       for(var subcat in success){
+                        $http.delete("http://app.liquamart.com/api/subcategories/" + 
+                            subcat.id + "/products/rel/" + data.id +"?access_token="+$localStorage.accessToken)
+                        .success(function(response){console.log(response)});
+                    }},
+                    function(error){console.log(error)
+                    });
                 Product.deleteById({id:productId},
-                    function(success){console.log('delete success')},
+                    function(success){console.log(productId);console.log('delete success' +productId)},
                     function(error){console.log('delete error :'+error)});
                 SweetAlert.swal({
                     title: "Deleted!", 
