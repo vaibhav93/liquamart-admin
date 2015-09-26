@@ -219,6 +219,7 @@ app.controller('ngTableCtrl3', ["$scope", "$filter", "$http", "$timeout", "ngTab
     $scope.updateUser = function(user) {
         //call lb ng service function to update user
         //console.log($scope.alert.val);
+        user.state = user.state.name;
         User.prototype$updateAttributes({id:user.id},user,function(newUser){
             $scope.alert.val=1;
             //console.log($scope.alert.val);

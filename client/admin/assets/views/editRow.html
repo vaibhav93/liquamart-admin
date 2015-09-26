@@ -15,7 +15,7 @@
              ng-disabled="disabled"
              reset-search-input="false"
              style="width: 300px;">
-    		<ui-select-match placeholder="Enter an address...">{{$select.selected.name}}</ui-select-match>
+    		<ui-select-match placeholder="{{user.state}}">{{$select.selected.name}}</ui-select-match>
     		<ui-select-choices repeat="address in addresses | filter: $select.search"
              refresh="refreshAddresses($select.search)"
              refresh-delay="0">
