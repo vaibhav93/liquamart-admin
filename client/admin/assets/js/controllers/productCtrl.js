@@ -215,7 +215,8 @@ app.controller('productCtrl', ["$scope", "$filter","$timeout","$http", "Upload",
                     });
                     Product.deleteById({id:productId},
                     function(success){console.log(productId);console.log('delete success' +productId)},
-                    function(error){console.log('delete error :'+error)
+                    function(error){console.log('delete error :'+error);
+                    $scope.tableParams.reload();
                     });
                     
                 });
@@ -226,7 +227,7 @@ app.controller('productCtrl', ["$scope", "$filter","$timeout","$http", "Upload",
                     type: "success",
                     confirmButtonColor: "#007AFF"
                 });
-                $scope.tableParams.reload();
+                
 
             } else {
                 SweetAlert.swal({
