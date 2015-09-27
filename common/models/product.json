@@ -13,7 +13,16 @@
     "id": {
         "type": "string",
         "id": true
-      }
+      },
+    "featured":{
+        "type":"boolean",
+        "default":false
+    },
+    "latest":{
+        "type":"boolean",
+        "default":false
+    }
+
   },
   "validations": [],
   "relations": {
