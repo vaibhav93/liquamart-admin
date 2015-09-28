@@ -3,7 +3,23 @@ var FB = require('fb');
 var app = require('../../server/server');
 var response={};
 module.exports = function(User) {
-	// User.afterRemote('prototype.__get__purchases',function(ctx,purchases,next){
+	User.afterRemote('login',function(ctx,user,next){
+		//console.log(user);
+		var UserModel = app.models.User;
+		UserModel.findById(ctx.result.userId,function(err,foundUser){
+			if(err){
+				next(err);
+			}
+			//console.log(foundUser);
+			ctx.result.name = foundUser.fname;
+			ctx.result.contact = foundUser.contact;
+			ctx.result.state = foundUser.state;
+			//console.log(ctx.result);
+			next();
+		})
+		// ctx.result.new1 = 'hi';
+		// console.log(ctx.result);
+		// next();
 	// 	var i=0
 	// 	promiseWhile(function(){
 	// 		return i < purchases.length
@@ -22,7 +38,7 @@ module.exports = function(User) {
 	// 	// 	})
 	// 	// }
 		
-	// });
+	});
 	var dummy_pass ='@39?C5(nfMyRv2zW';
 User.loginWithAccessTokenGoogle = function(uid,email,name,cb){
 console.log('here');
@@ -58,7 +74,7 @@ User.findOne({ where:query }, function(err,user){
 				cb(defaultError);
 			}
 			else{
-				cb(null,new_accessToken.id,new_accessToken.userId);
+				cb(null,new_accessToken.id,new_accessToken.userId,user);
 			}
 		});
 	}
@@ -122,7 +138,7 @@ User.findOne({ where:query }, function(err,user){
 			else{
 				ret.accessToken = new_accessToken.id;
 					ret.email = query.email
-				cb(null,ret.accessToken,query.email,new_accessToken.userId);
+				cb(null,ret.accessToken,query.email,new_accessToken.userId,user);
 				//cb(null,new_accessToken.id,query.email);
 			}
 		});
@@ -136,7 +152,7 @@ User.remoteMethod(
     'loginWithAccessTokenfb', 
     {
        accepts: {arg: 'accessToken', type: 'string'},
-       returns: [{arg: 'accessToken', type: 'string'},{arg: 'email', type: 'string'},{arg:'userId',type:'number'}],
+       returns: [{arg: 'accessToken', type: 'string'},{arg: 'email', type: 'string'},{arg:'userId',type:'number'},{arg:'user',type:'object'}],
        http: {path: '/loginWithFb', verb: 'POST'}
      }
 );
@@ -145,7 +161,7 @@ User.remoteMethod(
 	'loginWithAccessTokenGoogle',
 	{
 		accepts: [{arg: 'uid', type: 'string'},{arg: 'email',type:'string'},{arg:'name', type:'string'}],
-		returns: [{arg: 'accessToken', type: 'string'},{arg:'userId',type:'number'}],
+		returns: [{arg: 'accessToken', type: 'string'},{arg:'userId',type:'number'},{arg:'user',type:'object'}],
        	http: {path: '/loginWithGoogle', verb: 'POST'}
 	}
 );

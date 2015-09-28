@@ -9,6 +9,14 @@
     "fname": {
       "type": "string",
       "required": true
+    },
+    "contact": {
+      "type": "string",
+      "default":""
+    },
+    "state": {
+      "type": "string",
+      "default":""
     }
   },
   "validations": [],

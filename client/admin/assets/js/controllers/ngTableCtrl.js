@@ -214,6 +214,7 @@ app.controller('ngTableCtrl3', ["$scope", "$filter", "$http", "$timeout", "ngTab
     msg:'Data saved successfully'
     };
     $scope.setEditId = function (pid) {
+        $scope.user.state = 
         $scope.editId = pid;
     };
     $scope.updateUser = function(user) {
