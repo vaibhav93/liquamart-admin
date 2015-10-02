@@ -12,11 +12,11 @@
     },
     "contact": {
       "type": "string",
-      "default":""
+      "default": ""
     },
     "state": {
       "type": "string",
-      "default":""
+      "default": ""
     }
   },
   "validations": [],

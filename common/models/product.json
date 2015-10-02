@@ -9,24 +9,25 @@
     "name": {
       "type": "string",
       "required": true
-      },
+    },
     "id": {
-        "type": "string",
-        "id": true
-      },
-    "description":{
-        "type":"string"
+      "type": "string",
+      "id": true
     },
-    "imgUrls":"array",
-    "featured":{
-        "type":"boolean",
-        "default":false
+    "description": {
+      "type": "string"
     },
-    "latest":{
-        "type":"boolean",
-        "default":false
+    "imgUrls": {
+      "type": "array"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "latest": {
+      "type": "boolean",
+      "default": false
     }
-
   },
   "validations": [],
   "relations": {

@@ -60,5 +60,9 @@
   "cat": {
     "dataSource": "mongoDs",
     "public": true
+  },
+  "issue": {
+    "dataSource": "mongoDs",
+    "public": true
   }
 }

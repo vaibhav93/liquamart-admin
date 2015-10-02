@@ -11,9 +11,9 @@
       "required": true
     },
     "id": {
-        "type": "string",
-        "id": true
-      },
+      "type": "string",
+      "id": true
+    },
     "orderId": {
       "type": "string",
       "required": "true"
