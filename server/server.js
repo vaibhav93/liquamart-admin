@@ -68,6 +68,7 @@ app.post('/img', upload.single('file'), function(req, res,next) {
 
     
 // })
+//Get role api
 app.use('/api/getRole',function(req,res,next){
 
   var currentuser={};
@@ -97,15 +98,18 @@ app.use('/api/getRole',function(req,res,next){
             res.end();
           }
           var roleMappingModel = app.models.RoleMapping;
+          console.log(user);
           roleMappingModel.findOne({where:{principalId:user.id}},function(err,mappings){
             if(err) {
               next(err);
             }
             else{
+              console.log(mappings);
               var roleModel = app.models.Role;
-              roleModel.findOne({where:{id:mappings.id}},function(err,Role){
+              roleModel.findOne({where:{id:mappings.roleId}},function(err,Role){
                 if(err) console.log(err);
                 else{
+                  console.log(Role);
                   res.json(Role.name);
                 }
               });
