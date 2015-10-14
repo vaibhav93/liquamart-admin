@@ -32,8 +32,11 @@
    */
   deploy : {
     production : {
-      user : "root",
-      host : "104.236.226.2",
+      user : "varun",
+      host :  [ {
+            host : "45.55.41.225",
+            port: "213"
+          }],
       ref  : "origin/master",
       repo : "https://github.com/vaibhav93/liquamart-admin.git",
       path : "/home/admin/web/liquamart",
