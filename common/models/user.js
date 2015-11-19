@@ -17,27 +17,6 @@ module.exports = function(User) {
 			//console.log(ctx.result);
 			next();
 		})
-		// ctx.result.new1 = 'hi';
-		// console.log(ctx.result);
-		// next();
-	// 	var i=0
-	// 	promiseWhile(function(){
-	// 		return i < purchases.length
-	// 	},function(){
-	// 		productModel.findById(ctx.result[i].productId).then(function(product){
-	// 			i++;
-	// 			console.log(i);
-	// 		})
-	// 	});
-			
-	// 	// for(var i=0;i<ctx.result.length;i++){
-
-	// 	// 	var productModel = app.models.product;
-	// 	// 	productModel.findById(ctx.result[i].productId).then(function(product){
-	// 	// 		console.log(i);
-	// 	// 	})
-	// 	// }
-		
 	});
 	var dummy_pass ='@39?C5(nfMyRv2zW';
 User.loginWithAccessTokenGoogle = function(uid,email,name,cb){
